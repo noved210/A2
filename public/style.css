@@ -1,0 +1,15 @@
+body{
+  background-color: #062840;
+}
+
+img{
+  height:300px;
+  width: 300px;
+}
+
+#main_body{
+  margin:auto;
+  width:50%;
+  background-color: #1AA0FF;
+  padding: 50px;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Temperature-Converter",
+  "version": "1.0.0",
+  "description": "Simple Temperature Converter",
+  "main": "server.js",
+  "author": "Devon A Rimmington",
+  "dependencies":{
+    "express"        : "^4.13.4",
+    "cloudinary"     : "^1.5.0",
+    "body-parser"    : "^1.16.0",
+    "quintjs"        : "^2.1.1"
+  }
+}

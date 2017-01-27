@@ -1,0 +1,75 @@
+<DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<title>A2</title>
+<script src="./index.js"></script>
+<link rel="stylesheet" type="text/css" href="./style.css"/>
+</head>
+
+<body ng-app="upload">
+
+<div id="main_body">
+
+	<h1>Get List</h1>
+
+	<div ng-controller="list_controller">
+
+		<img alt="Image goes here" ng-src="{{image_url}}"/>
+
+		<br>
+
+		JPG<input type="radio" ng-model="format" value="jpg"/>
+		PNG<input type="radio" ng-model="format" value="png"/>
+		BMP<input type="radio" ng-model="format" value="bmp"/>
+		<input type="button" value="submit" ng-click="getList()"/>
+
+		<br>
+		<br>
+
+		<span ng-repeat="image in list | filter : format">
+			<p style="display:inline;" ng-bind="image.public_id + '.' + image.format"></p>
+			<input type="button" ng-click="viewImage(image.public_id, image.format)" value="View Image"/>
+			<a type="button" href="{{image.url}}" download="{{image.public_id}}">download</a>
+			<input type="button" ng-click="deleteImage(image.public_id)" value="Delete"/>
+
+			<br><br>
+		</span>
+
+	</div>
+
+	<hr>
+
+	<h1>Upload</h1>
+	<div ng-controller="upload_controller">
+		<form name="upload_form" enctype="multipart/form-data">
+			<h3>Upload method</h3>
+			File<input type="radio" ng-model="type" value="file">
+			URL<input type="radio" ng-model="type" value="url">
+			<br>
+			<span>
+				<span ng-show="type == 'file'">
+					File location<input name="file_input" type="file" id="file_location">
+				</span>
+				<span ng-show="type == 'url'">
+					Image URL<input name="url_input" type="url" ng-model="file_url">
+				</span>
+			</span>
+
+			<br>
+
+			Image name<input name="img_name" type="text" ng-model="image_name" required></input>
+			<input type="submit" ng-click="uploadImage(upload_form.img_name.$valid)"></input>
+		</form>
+	</div>
+
+</div>
+
+</body>
+
+
+
+</html>
